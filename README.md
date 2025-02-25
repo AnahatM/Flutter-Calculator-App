@@ -1,6 +1,8 @@
 # Flutter Calculator
 
-A simple calculator mobile app made using Flutter.
+A simple calculator mobile app made using Flutter. Featuring a simple and modern user-interface.
+
+<img src="images/CalculatorAppMockup.png" alt="Calculator App Mockup" width="600"/>
 
 ## Flutter Guide
 
