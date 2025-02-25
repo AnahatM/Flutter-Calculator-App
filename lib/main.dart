@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator/components/my_button.dart';
 import 'package:flutter_calculator/components/my_text_field.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() => runApp(MyApp());
 
@@ -118,11 +119,7 @@ class _HomePageState extends State<HomePage> {
         });
       },
       "=" => () {
-        setState(() {
-          // Here you can add the logic to evaluate the expression
-          // For example, using a package like 'expressions' or 'math_expressions'
-          // userAnswer = evaluateExpression(userQuestion);
-        });
+        handleEvaluation();
       },
       _ => () {
         setState(() {
@@ -130,6 +127,17 @@ class _HomePageState extends State<HomePage> {
         });
       },
     };
+  }
+
+  // Method to evaluate the expression in the question text field
+  void handleEvaluation() {
+    setState(() {
+      // Evaluate using math_expressions
+      ShuntingYardParser p = ShuntingYardParser();
+      Expression exp = p.parse(userQuestion.replaceAll('x', '*'));
+      ContextModel cm = ContextModel();
+      userAnswer = exp.evaluate(EvaluationType.REAL, cm).toString();
+    });
   }
 
   // Build Method
