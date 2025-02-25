@@ -27,6 +27,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var userQuestion = '';
   var userAnswer = '';
+  var previousAnswer = '';
 
   // List of Calculator Buttons
   final List<String> buttons = [
@@ -132,11 +133,20 @@ class _HomePageState extends State<HomePage> {
   // Method to evaluate the expression in the question text field
   void handleEvaluation() {
     setState(() {
-      // Evaluate using math_expressions
+      // Replace display symbols with correct operators
+      String parsedQuestion = userQuestion
+          .replaceAll('%', '/100')
+          .replaceAll('x', '*')
+          .replaceAll('ANS', previousAnswer);
+
+      // Evaluate using math_expressions library
       ShuntingYardParser p = ShuntingYardParser();
-      Expression exp = p.parse(userQuestion.replaceAll('x', '*'));
+      Expression exp = p.parse(parsedQuestion);
       ContextModel cm = ContextModel();
       userAnswer = exp.evaluate(EvaluationType.REAL, cm).toString();
+
+      // Store the answer for ANS button
+      previousAnswer = userAnswer;
     });
   }
 
