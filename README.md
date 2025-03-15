@@ -2,6 +2,9 @@
 
 A simple calculator mobile app made using Flutter. Featuring a simple and modern user-interface.
 
+![Flutter](https://img.shields.io/badge/-Flutter-05122A?style=flat-square&logo=Flutter&color=2a2e34) 
+![Dart](https://img.shields.io/badge/-Dart-05122A?style=flat-square&logo=Dart&color=2a2e34)
+
 <img src="images/CalculatorAppMockup.png" alt="Calculator App Mockup" width="600"/>
 
 ## Flutter Guide
